@@ -26,7 +26,7 @@
 
 </script>
 
-<svelte:window on:keydown={handleEvent} on:click={handleEvent}/>
+<svelte:window on:click={handleEvent}/>
 
 <main>
     {#if activated}
@@ -38,7 +38,7 @@
             {/if}
         </div>
     {:else}
-        <h1>Press any key to begin</h1>
+        <h1>Click anywhere to begin</h1>
     {/if}
 </main>
 
