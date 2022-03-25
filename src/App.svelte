@@ -1,6 +1,7 @@
 <script>
     import { selections } from './data.js';
     import { onMount } from 'svelte'
+    import { press } from 'svelte-gestures';
 
     let key;
     let item = selections[Math.floor(Math.random()*selections.length)];
@@ -26,7 +27,7 @@
 
 </script>
 
-<svelte:window on:click={handleEvent}/>
+<svelte:window on:click={handleEvent} on:press={handleEvent} />
 
 <main>
     {#if activated}
