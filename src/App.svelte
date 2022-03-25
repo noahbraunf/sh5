@@ -5,13 +5,14 @@
     let key;
     let item = selections[Math.floor(Math.random()*selections.length)];
     let firstTime = true;
+    let activated = false;
 
     $: color = item.color;
     $: isImage = item.isImage;
     $: path = item.path;
 
 
-    function handleKeydown(event) {
+    function handleEvent(event) {
         if (firstTime) {
             const audio = new Audio();
             audio.src = "audio/bird.mp3";
@@ -19,16 +20,16 @@
 
             firstTime = false;
         }
-        key = event.key;
         item = selections[Math.floor(Math.random()*selections.length)];
+        activated = true;
     }
 
 </script>
 
-<svelte:window on:keydown={handleKeydown}/>
+<svelte:window on:keydown={handleEvent} on:click={handleEvent}/>
 
 <main>
-    {#if key}
+    {#if activated}
         <div >
             {#if isImage}
                 <img src={path} alt='slaughterhouse 5'/>
